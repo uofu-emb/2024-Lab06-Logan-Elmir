@@ -77,16 +77,3 @@ void taskHandler(TaskFunction_t primaryTask, int primaryPriority,
     vTaskDelete(primaryThread);
     vTaskDelete(secondaryThread);
 }
-
-int main() {
-    stdio_init_all();
-    hard_assert(cyw43_arch_init() == PICO_OK);
-
-    semaphore = xSemaphoreCreateBinary();
-
-    TaskHandle_t taskHandler;
-
-    xTaskCreate(taskHandler, "Task Handler", configMINIMAL_STACK_SIZE, NULL, 1, &taskHandler);
-
-    return 0;
-}
